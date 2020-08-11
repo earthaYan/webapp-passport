@@ -1,0 +1,22 @@
+const _conf=require('./common/js/_conf')
+console.log("当前构建环境：",process.env.VUE_APP_TYPE)
+module.exports={
+    devServer:{
+        disableHostCheck:true,
+        port:8301,
+        hot:true
+    },
+    publicPath:
+        process.env.VUE_APP_TYPE==='prd'
+        ?'https://static/house730.com/m/main'
+        :process.env.VUE_APP_TYPE==='dev'
+        ?undefined
+        :`https://${process.env.VUE_APP_TYPE||''}static.house730.com.cn/m/main`,
+    outputDir:`./dist/${process.env.VUE_APP_TYPE||'prd'}/`,
+    filenameHashing:process.env.VUE_APP_TYPE==='prd'?true:false,
+    configureWebpack:{
+        externals:{
+            'vue':'Vue'
+        }
+    }
+}
