@@ -1,17 +1,16 @@
 <template>
   <div id="app">
-    <div id="nav">
-      <router-link to="/">Home</router-link> |
-      <router-link to="/about">Aboutme</router-link>
-    </div>
-    
-    <router-view/>
+    <router-view v-if="isRouterAlive"/>
   </div>
 </template>
 <script>
 
 export default {
-  
+  data(){
+    return{
+      isRouterAlive:true
+    }
+  }
 }
 </script>
 <style lang="scss">
